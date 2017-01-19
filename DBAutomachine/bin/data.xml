@@ -1,0 +1,43 @@
+<data>
+	<WebLink>http://10.96.11.137:8110/bafrontend/client/build/client.jsp</WebLink>
+
+	<Username>Administrator</Username>
+	<Password>PASSWORD</Password>
+
+	<UsernameXPath>//*[@id="username"]</UsernameXPath>
+	<PasswordXPath>//*[@id="login"]/div/div/div[2]/div[1]/input[2]</PasswordXPath>
+	<SignINXPath>//*[@id="logininfo"]/div/button</SignINXPath>
+
+	<StartXPath>/html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div/div/div[1]</StartXPath>
+	<LoadXPath>/html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div/div/div[7]</LoadXPath>
+	<ExploreXPath>/html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div/div/div[2]</ExploreXPath>
+
+	<CreateDatabaseXPath>/html/body/div[3]/div[2]/div[2]/div[4]/div[2]/div[2]/div/div/div[3]/div[2]/div/div[2]/div[2]</CreateDatabaseXPath>
+
+	<DatabaseXPaths>
+		<PostgreSQL>/html/body/div[3]/div[3]/div[2]/div/div/div/div[12]</PostgreSQL>
+		<MySQL>/html/body/div[3]/div[3]/div[2]/div/div/div/div[5]</MySQL>
+		<Oracle>/html/body/div[3]/div[6]/div[2]/div/div/div/div[4]</Oracle>
+		<DB2>/html/body/div[3]/div[6]/div[2]/div/div/div/div[6]</DB2>
+	</DatabaseXPaths>
+
+	<DatabaseCreationTest1XPaths>
+		<NameXPath>/html/body/div[3]/div[5]/div[2]/div[1]/input[1]</NameXPath>
+		<ServerXPath>/html/body/div[3]/div[5]/div[2]/div[1]/input[3]</ServerXPath>
+		<UserXPath>/html/body/div[3]/div[5]/div[2]/div[1]/input[5]</UserXPath>
+		<PasswordXPath>/html/body/div[3]/div[5]/div[2]/div[1]/input[6]</PasswordXPath>
+		<DatabaseXPath>/html/body/div[3]/div[5]/div[2]/div[1]/input[7]</DatabaseXPath>
+	</DatabaseCreationTest1XPaths>
+
+
+	<DatabaseCreationTest1Data>
+		<Name>SeshuTest1</Name>
+		<Server>10.96.11.137</Server>
+		<User>postgres</User>
+		<Password>Opentext1!</Password>
+		<Database>postgres</Database>
+	</DatabaseCreationTest1Data>
+
+	<CreateDatabaseOKXpath>/html/body/div[3]/div[5]/div[2]/div[2]</CreateDatabaseOKXpath>
+
+</data>

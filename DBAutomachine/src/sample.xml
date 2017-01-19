@@ -1,0 +1,70 @@
+<data>
+
+	<WebLink>http://10.96.11.137:8110/bafrontend/client/build/client.jsp</WebLink>
+
+	<LogIn>
+		<Username>
+			<Data>Administrator</Data>
+			<XPath>//*[@id="username"]</XPath>
+		</Username>
+		<Password>
+			<Data>PASSWORD</Data>
+			<XPath>//*[@id="login"]/div/div/div[2]/div[1]/input[2]</XPath>
+		</Password>
+		<SignIN>
+			<XPath>//*[@id="logininfo"]/div/button</XPath>
+		</SignIN>
+	</LogIn>
+
+	<Start>
+		<XPath>/html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div/div/div[1]</XPath>
+	</Start>
+
+	<Load>
+		<XPath>/html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div/div/div[7]</XPath>
+		<Base>//*[@id="information"]</Base>
+		<Databases>/html/body/div[3]/div[2]/div[2]/div[4]/div[2]/div[2]/div/div/div[3]/div[2]/div/div[2]/div[3]/div/div/div</Databases>
+		<NewDatabase>
+			<XPath>/html/body/div[3]/div[2]/div[2]/div[4]/div[2]/div[2]/div/div/div[3]/div[2]/div/div[2]/div[2]</XPath>
+			<Database>
+				<PostgreSQL>/html/body/div[3]/div[3]/div[2]/div/div/div/div[12]</PostgreSQL>
+				<MySQL>/html/body/div[3]/div[3]/div[2]/div/div/div/div[5]</MySQL>
+				<Oracle>/html/body/div[3]/div[6]/div[2]/div/div/div/div[4]</Oracle>
+				<DB2>/html/body/div[3]/div[6]/div[2]/div/div/div/div[6]</DB2>
+			</Database>
+			<Data>
+				<Name>/html/body/div[3]/div[5]/div[2]/div[1]/input[1]</Name>
+				<Server>/html/body/div[3]/div[5]/div[2]/div[1]/input[3]</Server>
+				<Username>/html/body/div[3]/div[5]/div[2]/div[1]/input[5]</Username>
+				<Password>/html/body/div[3]/div[5]/div[2]/div[1]/input[6]</Password>
+				<Database>/html/body/div[3]/div[5]/div[2]/div[1]/input[7]</Database>
+			</Data>
+			<Create>/html/body/div[3]/div[5]/div[2]/div[2]</Create>
+		</NewDatabase>
+	</Load>
+
+	<Explore>
+		<XPath>/html/body/div[3]/div[2]/div[2]/div[4]/div[1]/div/div/div[2]</XPath>
+	</Explore>
+	
+	<Test1>
+		<Name>SeshuPosetGresTest1</Name>
+		<Server>10.96.11.137</Server>
+		<Port>5432</Port>
+		<Username>postgres</Username>
+		<Password>Opentext1!</Password>
+		<Database>postgres</Database>
+		<Table>names</Table>
+	</Test1>
+
+	<Test2>
+		<Name>SeshuMySQLTest1</Name>
+		<Server>10.96.11.137</Server>
+		<Port>5432</Port>
+		<User>first</User>
+		<Password>PASSWORD</Password>
+		<Database>classicmodels</Database>
+		<Table>names</Table>
+	</Test2>
+
+</data>
