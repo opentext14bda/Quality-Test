@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Data>
+	<credentials>
+		<username>Administrator</username>
+		<pwd>PASSWORD</pwd>
+	</credentials>
+	<postgres>		
+		<Name>postgresdb</Name>
+		<Description>postregs</Description>
+		<Server>10.96.11.137</Server>
+		<User>postgres</User>
+		<Password>Opentext1!</Password>
+		<Database>postgres</Database>
+		<Options>None</Options>
+	</postgres>
+	<mysql>
+		<Name>mysqldb</Name>
+		<Description>mysql</Description>
+		<Server>10.96.45.160</Server>
+		<User>first</User>
+		<Password>PASSWORD</Password>
+		<Database>classicmodels</Database>
+		<Options>None</Options>
+	</mysql>
+	<oracle>
+		<Name>oracledb</Name>
+		<Description>oracle</Description>
+		<Server>10.96.60.138</Server>
+		<User>system</User>
+		<Password>admin@1234</Password>
+		<Database>xe</Database>
+		<Options>None</Options>
+	</oracle>
+	<sqlserver>
+		<Name>sqlserverdb</Name>
+		<Description>sqlserver</Description>
+		<Server>10.96.45.155</Server>
+		<User>sa</User>
+		<Password>Opentext1</Password>
+		<Database>adventureworks2012</Database>
+		<Options>None</Options>
+	</sqlserver>
+	
+</Data>

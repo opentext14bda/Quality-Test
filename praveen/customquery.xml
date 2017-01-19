@@ -1,0 +1,6 @@
+<query>
+	<postgres>
+		<postgresqueryname>sample1</postgresqueryname>
+		<postgresquery>select * from businessentity</postgresquery>
+	</postgres>
+</query>	
