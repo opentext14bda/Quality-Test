@@ -19,9 +19,6 @@ public class DBUtils
 			if(databaseType.equals("PostgreSQL"))
 			{
 				String db = "jdbc:postgresql://"+server+":"+port+"/"+table;
-				System.out.println(db);
-				System.out.println(username);
-				System.out.println(password);
 				c = DriverManager.getConnection(db, username, password);
 			}
 		}

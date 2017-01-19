@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 
 import DBAutomachineUtils.*;
 
@@ -48,21 +47,30 @@ class ExtraFunctions
 		amutils.utilClick(xml.getXMLData("Load","NewDatabase","Create"));
 	}
 	
-	public String getDatabaseXpath(String details)
+	public WebElement getRequriedElement(List<WebElement> elements,String details,String Tag)
 	{
-		for(WebElement e : amutils.getElements(xml.getXMLData("Load","Databases")))
+		for(WebElement e : elements)
 		{
-			if(e.getText().equals(xml.getXMLData(details,"Name")))
-				return e.getAttribute("xpath");
+			if(e.getText().equals(xml.getXMLData(details,Tag)))
+				return e;
 		}
-		System.out.println(amutils.getElements(xml.getXMLData("Load","Databases")).size());
 		return null;
 	}
 	
 	public void selectSQLDatabaseFromOpenTextBDA(String databaseType,String details)
 	{
 		amutils.utilClick(xml.getXMLData("Load","XPath"));
-		amutils.DragAndDrop(getDatabaseXpath(details), xml.getXMLData("Load","Base"));
+		
+		amutils.rightClick(getRequriedElement(amutils.getElements(xml.getXMLData("Load","Databases")),details,"Name"));
+		
+		amutils.rightClick(getRequriedElement(amutils.getElements(xml.getXMLData("Load","Tables")),details,"Table"));
+	}
+	
+	public int rowCountFromOpentextBDA(String databaseType,String details)
+	{
+		loginToOpenTextBDA();
+		selectSQLDatabaseFromOpenTextBDA(databaseType,details);
+		return amutils.getElements("/html/body/div[3]/div[5]/div[2]/div[2]/div/div[1]/div[1]/div/div[2]/div/div/div").size();
 	}
 	
 	public int rowCountFromDatabase(String databaseType,String details)
@@ -89,20 +97,55 @@ class ExtraFunctions
 		return rowCount;
 	}
 	
-	public int rowCountFromOpentextBDA(String databaseType,String details)
-	{
-		loginToOpenTextBDA();
-		selectSQLDatabaseFromOpenTextBDA(databaseType,details);
-		
-		
-		return -1;
-	}
-	
 	public void rowCountCheck(String databaseType,String details)
 	{
-		//assert rowCountFromDatabase(databaseType,details)==rowCountFromOpentextBDA(databaseType,details) : "Testcase Failed";
-		System.out.println(rowCountFromDatabase(databaseType,details));
-		System.out.println(rowCountFromOpentextBDA(databaseType,details));
+		assert rowCountFromDatabase(databaseType,details)==rowCountFromOpentextBDA(databaseType,details) : "Testcase Failed";
+		
+		amutils.closeSession();
+		
+		System.out.println("Testcases Pased");
+	}
+	
+	public ResultSet tablesFromDatabase(String databaseType,String details)
+	{
+		Connection c = dbutils.getConnection(databaseType, xml.getXMLData(details,"Server"), xml.getXMLData(details,"Port"), xml.getXMLData(details,"Username"), xml.getXMLData(details,"Password"), xml.getXMLData(details,"Database"));
+		
+		ResultSet rs = dbutils.Query(c, "SELECT table_name FROM information_schema.tables where table_schema='public'");
+		
+		return rs;
+	}
+	
+	public List<String> tablesFromOpentextBDA(String databaseType,String details)
+	{
+		List<String> result = new ArrayList<String>();
+		
+		loginToOpenTextBDA();
+		
+		amutils.utilClick(xml.getXMLData("Load","XPath"));
+		
+		amutils.rightClick(getRequriedElement(amutils.getElements(xml.getXMLData("Load","Databases")),details,"Name"));
+		
+		for(WebElement e : amutils.getElements(xml.getXMLData("Load","Tables")))
+			result.add(e.getText());
+		
+		return result;
+	}
+	
+	public void tablesCheck(String databaseType,String details)
+	{
+		ResultSet tablesData1 = tablesFromDatabase(databaseType,details);
+		List<String> tablesData2 = tablesFromOpentextBDA(databaseType,details);
+		
+		try
+		{
+			while(tablesData1.next())
+				assert tablesData2.contains(tablesData1.getString(1)) : "Testcase Failed";
+		}
+		catch(SQLException e) {e.printStackTrace();}
+		
+		amutils.closeSession();
+		
+		System.out.println("Testcases Pased");
 	}
 }
 
@@ -115,7 +158,7 @@ class SolveChallange extends ExtraFunctions
 	
 	public void F2()
 	{
-		
+		tablesCheck("PostgreSQL","Test1");
 	}
 	
 	public void F3()
@@ -137,7 +180,7 @@ public class DBAutomachine
 		
 		obj.F1();
 		
-		obj.F2();
+		//obj.F2();
 		
 		obj.F3();
 		

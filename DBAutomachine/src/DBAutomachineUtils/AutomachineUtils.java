@@ -1,6 +1,5 @@
 package DBAutomachineUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -8,7 +7,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -68,7 +66,8 @@ public class AutomachineUtils
 	
 	public List<WebElement> getElements(String xpathData)
 	{
-		List<WebElement> elements = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xpathData)));
+		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(xpathData)));
+		List<WebElement> elements = driver.findElements(By.xpath(xpathData));
 		return elements;
 	}
 	
@@ -79,5 +78,22 @@ public class AutomachineUtils
 		WebElement target = getElement(xpath2);
 
 		(new Actions(driver)).dragAndDrop(element, target).perform();
+	}
+	
+	public void DragAndDrop(WebElement element,String xpath2)
+	{
+		WebElement target = getElement(xpath2);
+
+		(new Actions(driver)).dragAndDrop(element, target).perform();
+	}
+	
+	public void rightClick(WebElement e)
+	{
+		action.contextClick(e).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.RETURN).build().perform();
+	}
+	
+	public void closeSession()
+	{
+		driver.close();
 	}
 }
